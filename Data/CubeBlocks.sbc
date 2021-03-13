@@ -1,0 +1,68 @@
+﻿<?xml version="1.0"?>
+<Definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <CubeBlocks>
+    <Definition xsi:type="MyObjectBuilder_BatteryBlockDefinition">
+      <Id>
+        <TypeId>BatteryBlock</TypeId>
+        <SubtypeId>InductionCharger</SubtypeId>
+      </Id>
+      <DisplayName>Induction Charger</DisplayName>
+      <GuiVisible>false</GuiVisible>
+      <Icon>Textures/GUI/Icons/Cubes/Battery1x1.dds</Icon>
+      <Description>Slowly charges other Batteries in a 50m Radius. Other Batteries must not be on the Same Grid. The farther away the Batteries are the higher the Powerloss is.</Description>
+      <CubeSize>Large</CubeSize>
+      <BlockTopology>TriangleMesh</BlockTopology>
+      <Size x="1" y="1" z="1"/>
+      <ModelOffset x="0" y="0" z="0"/>
+      <Model>Models\Cubes\Large\BatteryLarge.mwm</Model>
+      <Components>
+        <Component Subtype="SteelPlate" Count="30"/>
+        <Component Subtype="Construction" Count="15"/>
+        <Component Subtype="Superconductor" Count="240"/>
+        <Component Subtype="PowerCell" Count="100">
+          <DeconstructId>
+            <TypeId>Ore</TypeId>
+            <SubtypeId>Scrap</SubtypeId>
+          </DeconstructId>
+        </Component>
+        <Component Subtype="Computer" Count="80"/>
+        <Component Subtype="Construction" Count="30"/>
+        <Component Subtype="SteelPlate" Count="150"/>
+      </Components>
+      <CriticalComponent Subtype="PowerCell" Index="0"/>
+      <BuildProgressModels>
+        <Model BuildPercentUpperBound="0.33" File="Models\Cubes\Large\BatteryLargeConstruction_1.mwm"/>
+        <Model BuildPercentUpperBound="0.66" File="Models\Cubes\Large\BatteryLargeConstruction_2.mwm"/>
+        <Model BuildPercentUpperBound="1.00" File="Models\Cubes\Large\BatteryLargeConstruction_3.mwm"/>
+      </BuildProgressModels>
+      <BlockPairName>InductionBattery</BlockPairName>
+      <EdgeType>Light</EdgeType>
+      <BuildTimeSeconds>80</BuildTimeSeconds>
+      <ResourceSourceGroup>Battery</ResourceSourceGroup>
+      <MaxPowerOutput>15</MaxPowerOutput>
+      <ResourceSinkGroup>BatteryBlock</ResourceSinkGroup>
+      <RequiredPowerInput>30</RequiredPowerInput>
+      <AdaptibleInput>true</AdaptibleInput>
+      <MaxStoredPower>2</MaxStoredPower>
+      <InitialStoredPowerRatio>0</InitialStoredPowerRatio>
+
+      <InventorySize>
+        <X>1</X>
+        <Y>1</Y>
+        <Z>1</Z>
+      </InventorySize>
+      <Public>true</Public>
+      <DamageEffectName>Damage_Electrical_Damaged</DamageEffectName>
+      <DamagedSound>ParticleElectrical</DamagedSound>
+      <EmissiveColorPreset>Extended</EmissiveColorPreset>
+      <DestroyEffect>BlockDestroyedExplosion_Large</DestroyEffect>
+      <DestroySound>WepSmallWarheadExpl</DestroySound>
+      <PCU>550</PCU>
+      <IsAirTight>true</IsAirTight>
+      <MirroringZ>Y</MirroringZ>
+      <MirroringY>Z</MirroringY>
+    </Definition>
+
+
+  </CubeBlocks>
+</Definitions>
